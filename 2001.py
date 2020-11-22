@@ -84,4 +84,35 @@ def game_calculate(score, number):
     return score
 
 
+def game_2001():
+    player = 0
+    pc = 0
+    dice_type = [3, 4, 6, 8, 10, 12, 20, 100]
+    tour = 1
+
+    print('----------GAME 2001-----------')
+    print('Wciśnięcie klawisza [ENTER]\npowoduje rzucenie kości D6')
+    while player < 2001 and pc < 2001:
+        input(f'Runda[{tour}]')
+        t_player = dice_roll('2D6')
+        t_pc = dice_roll('2D6')
+        if tour == 1:
+            player = t_player
+            pc = t_pc
+        else:
+            player = game_calculate(player, t_player)
+            pc = game_calculate(pc, t_pc)
+
+        print(f'gracz = {t_player}, komputer = {t_pc}')
+        print(f'Gra 2001 zdobyte punkty: gracz = {player}, komputer = {pc}')
+        tour += 1
+
+    print('----------KONIEC-----------')
+    if player >= 2001:
+        print(f'Gracz wygrł z ilością punktów = {player}')
+    else:
+        print(f'Komputer wygrł z ilością punktów = {pc}')
+
+
+game_2001()
 
