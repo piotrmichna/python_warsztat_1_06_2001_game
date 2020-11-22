@@ -72,3 +72,16 @@ def dice_roll(command_str):
             dice_value -= dice[3]
 
     return dice_value
+
+
+def game_calculate(score, number):
+    if number == 7:
+        score = int(score / 7)
+    elif number == 11:
+        score *= number
+    else:
+        score += number
+    return score
+
+
+
