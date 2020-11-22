@@ -90,12 +90,15 @@ def game_2001():
     dice_type = [3, 4, 6, 8, 10, 12, 20, 100]
     tour = 1
 
-    print('----------GAME 2001-----------')
-    print('Wciśnięcie klawisza [ENTER]\npowoduje rzucenie kości D6')
+    print('----------GAME 2001v1-----------')
+    print('Klawisza [ENTER] powoduje rzucenie losowych kości\nz zestawu D3, D4, D6, D8, D10, D12, D20, D100')
+
     while player < 2001 and pc < 2001:
         input(f'Runda[{tour}]')
-        t_player = dice_roll('2D6')
-        t_pc = dice_roll('2D6')
+        t_player = dice_roll('D'+str(dice_type[randint(0,len(dice_type)-1)]))
+        t_player += dice_roll('D'+str(dice_type[randint(0,len(dice_type)-1)]))
+        t_pc = dice_roll('D'+str(dice_type[randint(0,len(dice_type)-1)]))
+        t_pc += dice_roll('D'+str(dice_type[randint(0,len(dice_type)-1)]))
         if tour == 1:
             player = t_player
             pc = t_pc
@@ -103,11 +106,11 @@ def game_2001():
             player = game_calculate(player, t_player)
             pc = game_calculate(pc, t_pc)
 
-        print(f'gracz = {t_player}, komputer = {t_pc}')
+        print(f'gracz = {t_player}\nkomputer = {t_pc}')
         print(f'Gra 2001 zdobyte punkty: gracz = {player}, komputer = {pc}')
         tour += 1
 
-    print('----------KONIEC-----------')
+    print('-------------------KONIEC------------------')
     if player >= 2001:
         print(f'Gracz wygrł z ilością punktów = {player}')
     else:
